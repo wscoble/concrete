@@ -28,6 +28,8 @@
   }).options('v', {
     alias: 'version',
     describe: "Show version"
+  }).options('setup', {
+    describe: "Set up your git repository for concrete"
   }).argv;
 
   if (argv.help) {
@@ -38,6 +40,12 @@
   if (argv.v) {
     console.log(("Concrete v" + version).green);
     process.exit(1);
+  }
+
+  if (argv.setup !== true) {
+    require('./cli-session')(argv.setup, function() {
+      return process.exit(0);
+    });
   }
 
   if (argv._.length === 0) {

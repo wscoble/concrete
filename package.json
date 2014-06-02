@@ -29,7 +29,8 @@
     "stylus": "0.x",
     "coffeekup": "0.3.x",
     "mongodb": "0.9.x",
-    "express-namespace": "*"
+    "express-namespace": "*",
+    "prompt": "^0.2.13"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -30,6 +30,9 @@ optimist = require 'optimist'
             alias: 'version',
             describe: "Show version"
         })
+        .options('setup', {
+            describe: "Set up your git repository for concrete"
+        })
 
 # check if all our settings are good to go
 if argv.help
@@ -41,11 +44,16 @@ if argv.v
     console.log "Concrete v#{version}".green
     process.exit 1
 
+if argv.setup != true
+  require('./cli-session')(argv.setup, ->
+    process.exit 0
+  )
+
 # if there isn't a repo
 if argv._.length == 0
-    optimist.showHelp()
-    console.log 'You must specify a Git repo'.red
-    process.exit 1
+  optimist.showHelp()
+  console.log 'You must specify a Git repo'.red
+  process.exit 1
 
 # start server command
 startServer = ->
