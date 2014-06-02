@@ -12,7 +12,7 @@ module.exports = (grunt) ->
         tasks: ['stylus:compile']
 
       spec:
-        files: ['src/**/*.coffee','!src/views/**/*.coffee']
+        files: ['src/**/*.coffee','!src/views/**/*.coffee','spec/**/*.coffee']
         tasks: ['spec:default']
 
     coffee:
